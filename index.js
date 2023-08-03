@@ -16,13 +16,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/usuarios", async (req, res) => {
-  console.log("Rota GET/usuarios solicitada");
   try {
     const usuarios = await selectUsuarios();
     res.json(usuarios);
   } catch (error) {
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
+
+  console.log("Rota GET/usuarios solicitada");
 });
 
 app.listen(port, () => {
